@@ -1,8 +1,10 @@
 <application>
   <component name="FileTypeManager" version="17">
     <extensionMap>
+      <mapping pattern="userList" type="FTL" />
       <mapping pattern="*.js.flow" type="Flow" />
       <mapping pattern="*.js.flow" type="Flow" />
+      <mapping pattern="userList.ftl" type="PLAIN_TEXT" />
     </extensionMap>
   </component>
 </application>
