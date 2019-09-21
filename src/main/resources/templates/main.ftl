@@ -7,17 +7,18 @@
     <span><a href="/user">User list</a> </span>
 </div>
 <div>
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         <input type="text" name="text" placeholder="Введите сообщение"/>
         <input type="tag" name="tag" placeholder="Tag"/>
-        <input type="hidden" name="_csrf" value="${_csrf.token}" />
+        <input type="file" name="file"/>
+        <input type="hidden" name="_csrf" value="${_csrf.token}"/>
         <button type="submit">Добавить</button>
     </form>
 </div>
 
 <div>Список сообщений.</div>
 <form method="get" action="/main">
-    <input type="text" name="filter" value="${filter}"/>
+    <input type="text" name="filter" value="${filter?if_exists}"/>
     <button type="submit">Найти</button>
 </form>
 <#list messages as message>
@@ -25,7 +26,12 @@
         <b>${message.id}</b>
         <span>${message.text}</span>
         <i>${message.tag}</i>
-        <string>${message.authorName}</string>
+        <strong>${message.authorName}</strong>
+        <div>
+            <#if message.filename??>
+                <img src="/img/${message.filename}"/>
+            </#if>
+        </div>
     </div>
     <#else >
     No messages
